@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+// Object
+// Entry point
+
+protocol AnyRouter {
+    static func start() -> AnyRouter
+}
+
+class UserRouter: AnyRouter {
+    static func start() -> AnyRouter {
+        let router = UserRouter()
+        
+        // Assign VIP
+        
+        return router
+    }
+}

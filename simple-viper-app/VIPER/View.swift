@@ -32,6 +32,8 @@ class UserViewController: UIViewController, AnyView, UITableViewDelegate, UITabl
         return tableView
     }()
     
+    var users: [User] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemIndigo
@@ -46,7 +48,11 @@ class UserViewController: UIViewController, AnyView, UITableViewDelegate, UITabl
     }
     
     func update(with users: [User]) {
-        
+        DispatchQueue.main.async {
+            self.users = users
+            self.tableView.reloadData()
+            self.tableView.isHidden = false
+        }
     }
     
     func update(with error: String) {
@@ -56,10 +62,12 @@ class UserViewController: UIViewController, AnyView, UITableViewDelegate, UITabl
     // TableView Delegate and DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = users[indexPath.row].name
+        return cell
     }
 }

@@ -36,7 +36,6 @@ class UserRouter: AnyRouter {
         presenter.view = view
         presenter.interactor = interactor
        
-        
         router.entry = view as? EntryPoint
         
         return router

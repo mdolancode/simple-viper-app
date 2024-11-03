@@ -6,3 +6,29 @@
 //
 
 import Foundation
+
+// Object
+// Protocol
+// Reference to Presenter
+// Can make API call
+
+
+// https://jsonplaceholder.typicode.com/users
+
+protocol AnyInteractor {
+    var presenter: AnyPresenter? { get set }
+    
+    func getUsers()
+    
+}
+
+class UserInteractor: AnyInteractor {
+    var presenter: AnyPresenter?
+    
+    func getUsers() {
+        
+    }
+    
+    
+}
+
